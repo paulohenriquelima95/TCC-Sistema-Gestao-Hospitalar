@@ -19,6 +19,7 @@ O projeto foi concebido utilizando as seguintes tecnologias para o desenvolvimen
 *   **Linguagem de Programação:** Python
 *   **Framework Web:** Flask
 *   **Arquitetura:** API RESTful
+*   **Banco de Dados:** MySQL (ou compatível)
 *   **Modelagem:** UML (Diagrama de Casos de Uso e Classes) e DER (Diagrama Entidade-Relacionamento)
 
 ## Estrutura do Repositório
@@ -28,9 +29,14 @@ O projeto foi concebido utilizando as seguintes tecnologias para o desenvolvimen
 | `TCCfinal_PauloHenriqueLima-RU4376405.pdf` | O documento final do TCC em formato PDF. |
 | `README.md` | Este arquivo, contendo a descrição do projeto e instruções. |
 | `LICENSE` | Arquivo de licença (MIT) para definir como o código pode ser utilizado. |
+| `CONTRIBUTING.md` | Guia para orientar futuras contribuições ao projeto. |
+| `CODE_OF_CONDUCT.md` | Código de Conduta para manter um ambiente de colaboração respeitoso. |
 | `docs/` | Diretório para arquivos de documentação complementares, como o resumo em Markdown. |
-| `docs/resumo.md` | Resumo detalhado do TCC, ideal para visualização rápida no GitHub. |
-| `src/` | Diretório sugerido para o código-fonte da API Flask (se disponível). |
+| `src/` | **Contém o código-fonte da API Flask.** |
+| `src/run.py` | Ponto de entrada da aplicação Flask. |
+| `src/requirements.txt` | Lista de dependências Python. |
+| `src/.env.example` | Exemplo de arquivo de configuração de variáveis de ambiente. |
+| `src/mysql_setup.sql` | Script SQL para criação inicial do banco de dados. |
 
 ## Sumário do TCC
 
@@ -41,6 +47,48 @@ O projeto foi concebido utilizando as seguintes tecnologias para o desenvolvimen
 5.  **Plano de Testes e Resultados:** Testes funcionais da API.
 6.  **Conclusão:** Considerações finais e trabalhos futuros.
 
-## Como Publicar no Seu GitHub
+## Como Rodar o Projeto (API Flask)
 
-Siga o passo a passo detalhado que será fornecido para criar o repositório e sincronizar estes arquivos usando o GitHub Desktop.
+Para executar a API Back-end do SGHSS localmente, siga os passos abaixo:
+
+### Pré-requisitos
+
+*   **Python 3.x** instalado.
+*   **MySQL** (ou MariaDB) instalado e rodando.
+
+### 1. Configuração do Ambiente
+
+1.  **Navegue para a pasta `src`:**
+    ```bash
+    cd src
+    ```
+2.  **Crie um ambiente virtual** (recomendado):
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # No Linux/macOS
+    venv\Scripts\activate     # No Windows
+    ```
+3.  **Instale as dependências:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+### 2. Configuração do Banco de Dados
+
+1.  Acesse seu servidor MySQL (via terminal ou ferramenta gráfica).
+2.  Execute o script `mysql_setup.sql` para criar o banco de dados e as tabelas necessárias.
+
+### 3. Variáveis de Ambiente
+
+1.  Crie um arquivo chamado **`.env`** na pasta `src/` copiando o conteúdo de `.env.example`.
+2.  Edite o arquivo `.env` com suas credenciais de banco de dados e configurações de segurança (como a chave secreta do JWT).
+
+### 4. Inicialização da API
+
+1.  Certifique-se de que o ambiente virtual está ativado.
+2.  Execute o arquivo principal da aplicação:
+    ```bash
+    python run.py
+    ```
+
+A API estará rodando localmente, pronta para ser testada com ferramentas como Postman ou PowerShell, conforme descrito na seção de testes do TCC.
